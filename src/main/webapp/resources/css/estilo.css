@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.amarelo .fc-event-skin {
+    background: yellow;
+}
+.verde .fc-event-skin {
+    background: green;
+}
+
+.fotoredonda {
+    border: 4px solid #ffffff;
+    border-radius: 50%;
+    margin: 0 auto;
+    width: 96px;
+    height: 96px;
+    display: block;
+}
+
+.logo {
+    width: 5%;
+}
+
+.detail {
+    width: 85%;
+    padding-left: 25px;
+}
+
+div.ui-datatable table, td {
+    border: hidden !important;
+}
+
+.action-button {
+    margin-top: 10px;
+}
+
+body .ui-inputfield.ui-state-disabled {
+    border-bottom: 0;
+    opacity: 0.8;
+}
+
+body .ui-state-disabled {
+    opacity: 0.8;
+}
+
+.pickList-custom {
+    width: 600px !important;
+    height: 100px !important;
+}
+
+.icon-list {
+    font-size: 30px;
+    color: #757575;
+    margin: 24px;
+}
+
+.anexos-datalist {
+    width: 60%;
+    margin: auto;
+}
+
+.anexos-datalist ul {
+    margin: 0;
+    padding: 0;
+}
+
+.anexos-datalist .anexos-item {
+
+}
+
+.anexos-datalist .anexos-item .anexos-detail {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.anexos-datalist .anexos-item button {
+    float: right;
+    margin: 24px 24px 0 0;
+}
+
+.div-datalist-item {
+    border-bottom: 1px solid #bdbdbd;
+}
+
+.datalist-sub-title {
+    color: #757575;
+}
+
+.login-label-column {
+    width: 30%;
+    padding: 0 !important;
+}
+
+.login-value-column {
+    width: 70%;
+    padding: 0 !important;
+}
+
+.div-login-message {
+    margin-top: 10px;
+}
+

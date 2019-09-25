@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title> FACOMP JSF </title>
+</h:head>
+
+<h:body>
+
+    <h:form id="growl">
+        <p:growl life="8000" showDetail="false">
+            <p:autoUpdate></p:autoUpdate>
+        </p:growl>
+    </h:form>
+
+    <h1> Cadastro de Automóvel </h1>
+
+    <h:form id="selectForm">
+        <p:panelGrid columns="2" layout="grid">
+
+            <h:outputLabel for="nome" value="Nome:"/>
+            <p:inputText id="nome" placeholder="nome"
+                         value="#{automovelBean.automovel.nome}"
+                         required="true" requiredMessage="Entre com nome !"/>
+
+            <h:outputLabel value="Placa:"/>
+            <p:inputText placeholder="NSO-0676"
+                             value="#{automovelBean.automovel.placa}"
+                             required="true" requiredMessage="Entre com a Placa !"/>
+
+            <h:outputLabel for="tipo" value="Categoria:"/>
+            <p:selectOneListbox id="tipo" value="#{automovelBean.automovel.categoria}"
+                                converter="categoriaAutomovelConverter" required="true">
+                <f:selectItems value="#{automovelBean.categorias()}"/>
+            </p:selectOneListbox>
+
+            <h:outputLabel value="Marca:"/>
+            <p:selectOneMenu id="inputmarca"
+                             value="#{automovelBean.automovel.marca}"
+                            converter="entidadeConversor">
+
+                <f:selectItems value="#{marcaBean.listarTodas()}"
+                               var="marca"
+                               itemLabel="#{marca.nome}"
+                               itemValue="#{marca}"
+
+                />
+
+            </p:selectOneMenu>
+
+            <p:commandButton value="Salvar" icon="fa fa-floppy-o"
+                             update="selectForm"
+                             action="#{automovelBean.salvar()}"/>
+        </p:panelGrid>
+    </h:form>
+
+
+</h:body>
+
+</html>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.joinfaces:primefaces-spring-boot-starter:3.2.6">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/joinfaces/primefaces-spring-boot-starter/3.2.6/primefaces-spring-boot-starter-3.2.6.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/joinfaces/primefaces-spring-boot-starter/3.2.6/primefaces-spring-boot-starter-3.2.6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/joinfaces/primefaces-spring-boot-starter/3.2.6/primefaces-spring-boot-starter-3.2.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

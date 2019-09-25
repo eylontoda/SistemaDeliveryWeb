@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title> FACOMP JSF / GERENCIAR  </title>
+</h:head>
+
+<h:body>
+
+    <h:form id="growl">
+        <p:growl life="8000" showDetail="false">
+            <p:autoUpdate></p:autoUpdate>
+        </p:growl>
+    </h:form>
+
+    <h1> Gerenciamento de Marca </h1>
+
+    <h:form id="selectForm">
+
+        <p:panelGrid columns="2" layout="grid">
+
+            <p:inputText placeholder="Procurar por Marca" value="#{marcaBean.buscaNome}"/>
+
+            <p:commandButton value="Pesquisar" icon="fa fa-search Fs16 White" iconPos="right"
+                             update="panelCliente"/>
+
+            <p:button value="Novo"
+                      outcome="cadastro-marca.xhtml?faces-redirect=true" icon="fa fa-plus"
+                      iconPos="right"
+            />
+
+        </p:panelGrid>
+
+        <h:panelGroup id="panelCliente">
+
+            <p:dataTable id="entidadeDT" var="entidade"
+                         value="#{marcaBean.lista}"
+                         rowKey="#{entidade.id}" rows="10"
+                         rowsPerPageTemplate="10,15,20"
+                         emptyMessage="Lista vazia!"
+                         reflow="true">
+
+                <f:facet name="header">
+                    Marcas
+                </f:facet>
+
+                <p:column headerText="ID">
+                    <p:outputLabel value="#{entidade.id}" />
+                </p:column>
+
+                <p:column headerText="Marca">
+                    <p:outputLabel value="#{entidade.nome}" />
+                </p:column>
+
+                <p:column headerText="Ações ">
+
+                    <p:commandButton id="btnEditEntidade" value="Editar"
+                                     actionListener="#{marcaBean.setMarca(entidade)}"
+                                     icon="fa fa-pencil " iconPos="right"
+                                     oncomplete="PF('editarEntidadeDialog').show();"
+                                     update=":form-editar-entidade:dialog-editar-entidade">
+                    </p:commandButton>
+                    <p:commandButton id="btnDeleteEntidade" value="Excluir"
+                                     icon="fa fa-trash-o" iconPos="right"
+                                     actionListener="#{marcaBean.setMarca(entidade)}"
+                                     oncomplete="PF('excluirEntidadeDialog').show();"
+                                     update=":dialog-excluir-entidade"/>
+                </p:column>
+
+            </p:dataTable>
+        </h:panelGroup>
+    </h:form>
+
+    <h:form prependId="false">
+        <p:dialog id="dialog-excluir-entidade" header="Excluir"
+                  widgetVar="excluirEntidadeDialog"
+                  modal="true" resizable="false"
+                  responsive="true">
+
+            <p:outputPanel id="entidadeDelete" style="text-align:left;">
+                <h:outputText
+                        value="Tem certeza que deseja excluir #{marcaBean.marca.nome}?"/>
+                <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank">
+                    <p:commandButton value="Confirmar"
+                                     icon="fa fa-check" iconPos="right"
+                                     action="#{marcaBean.excluir()}"
+                                     update="selectForm:entidadeDT :growl"
+                                     onclick="PF('excluirEntidadeDialog').close();"
+                                     immediate="true"/>
+
+                    <p:commandButton value="Cancelar"
+                                     icon="fa fa-ban" iconPos="right"
+                                     onclick="PF('excluirEntidadeDialog').close();"
+                                     immediate="true"/>
+                </p:panelGrid>
+            </p:outputPanel>
+        </p:dialog>
+    </h:form>
+
+    <h:form id="form-editar-entidade">
+        <p:dialog id="dialog-editar-entidade" header="Editar"
+                  widgetVar="editarEntidadeDialog"
+                  modal="true" resizable="true"
+                  width="90%"
+                  responsive="true"
+                  fitViewport="true">
+
+            <p:outputPanel id="entidadeEdit" style="text-align:left;">
+                <p:panelGrid columns="2" layout="grid" styleClass="ui-panelgrid-blank">
+
+                    <h:outputLabel for="nome" value="Nome:"/>
+                    <p:inputText id="nome" placeholder="nome" value="#{marcaBean.marca.nome}"
+                                 required="true" requiredMessage="Entre com nome !"/>
+
+                </p:panelGrid>
+                <p:commandButton value="Salvar" styleClass="GreenButton"
+                                 action="#{marcaBean.atualizar()}"
+                                 icon="fa fa-floppy-o Fs16 White" iconPos="right"
+                                 update=":form-editar-entidade:dialog-editar-entidade
+                                                                     selectForm:entidadeDT :growl"
+                                 onclick="PF('editarEntidadeDialog').close();"/>
+            </p:outputPanel>
+        </p:dialog>
+
+    </h:form>
+
+
+
+</h:body>
+
+</html>
+
+
