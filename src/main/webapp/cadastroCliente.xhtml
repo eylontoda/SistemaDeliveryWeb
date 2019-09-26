@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title> FACOMP JSF </title>
+</h:head>
+
+<h:body>
+
+    <h:form id="growl">
+        <p:growl life="8000" showDetail="false">
+            <p:autoUpdate></p:autoUpdate>
+        </p:growl>
+    </h:form>
+
+    <h1>Cadastro de Cliente</h1>
+
+    <h:form id="selectForm">
+        <p:panelGrid columns="2" layout="grid">
+
+            <h:outputLabel for="descricao" value="Descrição:"/>
+            <p:inputText id="descricao" placeholder="Descrição"
+                         value="#{problemaBean.problema.descricao}"
+                         required="true" requiredMessage="Entre com a descrição !"/>
+
+
+            <p:commandButton value="Salvar" icon="fa fa-floppy-o"
+                             update="selectForm"
+                             action="#{problemaBean.salvar()}"/>
+                
+            <p:outputLabel value="Simple:" for="acSimple" />
+                <p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" />
+       
+        </p:panelGrid>
+        <p:growl id="msgs" showDetail="true" />
+     
+    <h:panelGrid columns="2" cellpadding="5">
+        <p:outputLabel value="Simple:" for="acSimple" />
+        <p:autoComplete id="acSimple" value="#{autoCompleteView.txt1}" completeMethod="#{autoCompleteView.completeText}" />
+    </h:panelGrid>
+     
+    <p:commandButton value="Submit" icon="pi pi-check" update="output msgs" oncomplete="PF('dlg').show()" />
+     
+    <p:dialog header="Values" resizable="false" showEffect="fade" widgetVar="dlg">
+        <p:panelGrid id="output" columns="2" columnClasses="label, value">
+            <h:outputText value="Simple:" />
+            <h:outputText value="#{autoCompleteView.txt1}" />
+        </p:panelGrid>
+    </p:dialog>
+    </h:form>
+    
+    <style type="text/css">
+    .ui-datalist .ui-datalist-content {
+        border:0 none
+    }
+     
+    .ui-datalist ul {
+        padding: 0px 10px 0 20px;
+        margin: 5px 0;
+    }
+     
+    .value {
+        font-weight: bold;
+    }
+     
+    .ui-autocomplete-itemtip {
+        -moz-box-sizing: content-box;
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+    }
+</style>
+ 
+ 
+
+  
+
+
+
+</h:body>
+
+</html>
